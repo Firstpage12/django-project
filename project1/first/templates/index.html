@@ -1,0 +1,70 @@
+{% block body %}
+
+<div class="container my-5 ">
+    <h2> Employee Table </h2>
+    <a href="/addemp" type="button" class="btn btn-dark my-2">+Add Employee</a>
+    <table class="table my-4 table-bordered table-hover ">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in myemps %}
+          <tr>
+            <th scope="row">{{i.eid}}</th>
+            <td>{{i.ename}}</td>
+            <td>{{i.eemail}}</td>
+            <td>{{i.econtact}}</td>
+            <td>
+            <a href="/updateemp/{{i.id}}" type="button" class="btn btn-dark btn-sm mx-2">Update</a>
+            <a href="/deleteemp/{{i.id}}" type="button" class="btn btn-dark btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+<div class="container my-5 ">
+    <h2> Departments Table </h2>
+    <a href="/adddept" type="button" class="btn btn-dark my-2">+Add Department</a>
+    <table class="table my-4 table-bordered table-hover ">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Department Id</th>
+            <th scope="col">Department Name</th>
+            <th scope="col">Department Manager</th>
+            <th scope="col">Actions</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            
+            {% for dept in deps %}
+               
+          <tr>
+            <th scope="row">{{dept.did}}</th>
+            <td>{{dept.dname}}</td>
+            
+            <td>{{dept.managername}}</td>
+            <td>
+              <a href="/updatedept/{{dept.did}}" type="button" class="btn btn-dark btn-sm mx-2">Update</a>
+              <a href="/deletedept/{{dept.did}}" type="button" class="btn btn-dark btn-sm">Delete</a>
+            </td>
+          
+            {% endfor %} 
+          </tr>
+            
+          
+          
+          
+        </tbody>
+      </table>
+</div>
+
+{% endblock body %}

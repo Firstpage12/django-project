@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container my-3">
+        <h2 class="my-3">Update Department Details</h2>
+        <form method="post" action="/updatedept/{{department.id}}">
+          {% csrf_token %}
+            
+            
+            <div class="form-group my-3">
+                <label for="exampleFormControlInput1">Department Name</label>
+                <input type="text" value={{department.dname}} class="form-control" id="dname" name="dname" placeholder="Department Name" required>
+              </div>
+              
+              <label class="my-3" for="exampleFormControlInput1">Select Manager</label>
+              <select name="manager" class="form-select" aria-label="Default select example">
+                <option value={{department.manager_id}} selected>{{department.manager_id}}</option>
+                {% for i in notManager %}
+                <option value={{i.did}}>{{i}}</option>
+                {% endfor %}
+                
+            
+              </select>
+
+              
+
+              <button type="submit" class="btn btn-dark my-3">Save Changes</button>
+            
+           
+            
+          </form>
+    </div>
+{% endblock body %}
